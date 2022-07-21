@@ -2,6 +2,7 @@ package util
 
 import (
 	"errors"
+	"fmt"
 	"strings"
 	"time"
 
@@ -19,15 +20,13 @@ func Get(url string, paras req.Param) ([]byte, error) {
 	var param req.Param
 	if url == "/signup/login" {
 		param = req.Param{
-			"app_version":  cfg.App.AppVersion,
-			"device_token": cfg.App.DeviceToken,
+			"app_version": cfg.App.AppVersion,
 		}
 	} else {
 		param = req.Param{
-			"account":      cfg.App.Account,
-			"device_token": cfg.App.DeviceToken,
-			"app_version":  cfg.App.AppVersion,
-			"login_token":  cfg.App.LoginToken,
+			"account":     cfg.App.Account,
+			"app_version": cfg.App.AppVersion,
+			"login_token": cfg.App.LoginToken,
 		}
 	}
 	for k, v := range paras {
@@ -41,6 +40,7 @@ func Get(url string, paras req.Param) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
+	fmt.Println(string(res))
 	res, err = Decode(r.String(), cfg.App.DefaultKey)
 	if !strings.Contains(string(res), "100000") {
 		err = errors.New(ErrTip(string(res)))

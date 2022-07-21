@@ -1,18 +1,17 @@
 package structure
 
 type DetailStruct struct {
-	Code         string        `json:"code"`
-	Data         DetailData    `json:"data"`
-	ScrollChests []ScrollChest `json:"scroll_chests"`
+	Code int        `json:"code"`
+	Data DetailData `json:"data"`
 }
 
 type DetailData struct {
-	BookInfo                 BookInfo                   `json:"book_info"`
-	IsInshelf                string                     `json:"is_inshelf"`
-	IsBuy                    string                     `json:"is_buy"`
-	UpReaderInfo             UpReaderInfo               `json:"up_reader_info"`
-	RelatedList              []BookInfo                 `json:"related_list"`
-	BookShortageReommendList []BookShortageReommendList `json:"book_shortage_reommend_list"`
+	BookInfo      BookInfo        `json:"book_info"`
+	IsInshelf     string          `json:"is_inshelf"`
+	IsBuy         string          `json:"is_buy"`
+	UpReaderInfo  UpReaderInfo    `json:"up_reader_info"`
+	RelatedList   []BookInfo      `json:"related_list"`
+	HotReviewList []HotReviewList `json:"book_shortage_reommend_list"`
 }
 
 type BookInfo struct {
@@ -20,27 +19,25 @@ type BookInfo struct {
 	BookName        string          `json:"book_name"`
 	Description     string          `json:"description"`
 	BookSrc         string          `json:"book_src"`
-	CategoryIndex   string          `json:"category_index"`
+	CategoryName    string          `json:"category_name"`
 	Tag             string          `json:"tag"`
 	TotalWordCount  string          `json:"total_word_count"`
 	UpStatus        string          `json:"up_status"`
-	UpdateStatus    string          `json:"update_status"`
 	IsPaid          string          `json:"is_paid"`
-	Discount        string          `json:"discount"`
+	Discount        int             `json:"discount"`
 	DiscountEndTime string          `json:"discount_end_time"`
 	Cover           string          `json:"cover"`
 	AuthorName      string          `json:"author_name"`
 	Uptime          string          `json:"uptime"`
 	Newtime         string          `json:"newtime"`
 	ReviewAmount    string          `json:"review_amount"`
-	RewardAmount    string          `json:"reward_amount"`
 	ChapterAmount   string          `json:"chapter_amount"`
-	IsOriginal      string          `json:"is_original"`
-	TotalClick      string          `json:"total_click"`
-	MonthClick      string          `json:"month_click"`
-	WeekClick       string          `json:"week_click"`
-	MonthNoVipClick string          `json:"month_no_vip_click"`
-	WeekNoVipClick  string          `json:"week_no_vip_click"`
+	TotalTsukkomi   string          `json:"total_tsukkomi"`
+	IsOriginal      int             `json:"is_original"`
+	RewardAmount    string          `json:"reward_amount"`
+	TotalClick      int             `json:"total_click"`
+	MonthClick      int             `json:"month_click"`
+	WeekClick       int             `json:"week_click"`
 	TotalRecommend  string          `json:"total_recommend"`
 	MonthRecommend  string          `json:"month_recommend"`
 	WeekRecommend   string          `json:"week_recommend"`
@@ -55,36 +52,45 @@ type BookInfo struct {
 	MonthFansValue  string          `json:"month_fans_value"`
 	TotalFansValue  string          `json:"total_fans_value"`
 	LastChapterInfo LastChapterInfo `json:"last_chapter_info"`
-	TagList         []TagList       `json:"tag_list"`
-	BookType        string          `json:"book_type"`
-	TransverseCover string          `json:"transverse_cover"`
+	SignStatus      string          `json:"sign_status"`
+	ShortNovel      string          `json:"short_novel"`
 }
 
 type LastChapterInfo struct {
-	ChapterID         string `json:"chapter_id"`
-	BookID            string `json:"book_id"`
-	ChapterIndex      string `json:"chapter_index"`
-	ChapterTitle      string `json:"chapter_title"`
-	Uptime            string `json:"uptime"`
-	Mtime             string `json:"mtime"`
-	RecommendBookInfo string `json:"recommend_book_info"`
+	ChapterId    string `json:"chapter_id"`
+	BookId       string `json:"book_id"`
+	ChapterIndex string `json:"chapter_index"`
+	ChapterTitle string `json:"chapter_title"`
+	Uptime       string `json:"uptime"`
 }
 
-type TagList struct {
-	TagID   string `json:"tag_id"`
-	TagType string `json:"tag_type"`
-	TagName string `json:"tag_name"`
-}
-
-type BookShortageReommendList struct {
-	BookID          string `json:"book_id"`
-	BookName        string `json:"book_name"`
-	Cover           string `json:"cover"`
-	Discount        string `json:"discount"`
-	DiscountEndTime string `json:"discount_end_time"`
-	Introduce       string `json:"introduce"`
-	Tag             string `json:"tag"`
-	TotalFavor      string `json:"total_favor"`
+type HotReviewList struct {
+	ReviewId      string `json:"review_id"`
+	BookId        string `json:"book_id"`
+	BookName      string `json:"book_name"`
+	Type          string `json:"type"`
+	Title         string `json:"title"`
+	ReviewContent string `json:"review_content"`
+	Rank          string `json:"rank"`
+	ReaderInfo    struct {
+		ReaderId       string        `json:"reader_id"`
+		ReaderName     string        `json:"reader_name"`
+		AvatarUrl      string        `json:"avatar_url"`
+		AvatarThumbUrl string        `json:"avatar_thumb_url"`
+		BaseStatus     string        `json:"base_status"`
+		ExpLv          string        `json:"exp_lv"`
+		Gender         string        `json:"gender"`
+		VipLv          int           `json:"vip_lv"`
+		IsAuthor       string        `json:"is_author"`
+		IsFollowing    string        `json:"is_following"`
+		UsedDecoration []interface{} `json:"used_decoration"`
+		IsInBlacklist  string        `json:"is_in_blacklist"`
+		BookFansValue  string        `json:"book_fans_value"`
+	} `json:"reader_info"`
+	LikeAmount    string `json:"like_amount"`
+	CommentAmount string `json:"comment_amount"`
+	IsLike        int    `json:"is_like"`
+	Ctime         string `json:"ctime"`
 }
 
 type UpReaderInfo struct {
@@ -94,27 +100,11 @@ type UpReaderInfo struct {
 	AvatarURL      string        `json:"avatar_url"`
 	AvatarThumbURL string        `json:"avatar_thumb_url"`
 	BaseStatus     string        `json:"base_status"`
-	ExpLV          string        `json:"exp_lv"`
-	ExpValue       string        `json:"exp_value"`
+	ExpLv          string        `json:"exp_lv"`
 	Gender         string        `json:"gender"`
-	VipLV          string        `json:"vip_lv"`
-	VipValue       string        `json:"vip_value"`
+	VipLv          int           `json:"vip_lv"`
 	IsAuthor       string        `json:"is_author"`
-	IsUploader     string        `json:"is_uploader"`
 	IsFollowing    string        `json:"is_following"`
 	UsedDecoration []interface{} `json:"used_decoration"`
 	IsInBlacklist  string        `json:"is_in_blacklist"`
-	Ctime          string        `json:"ctime"`
-}
-
-type ScrollChest struct {
-	ChestID     string `json:"chest_id"`
-	ReaderName  string `json:"reader_name"`
-	Gender      string `json:"gender"`
-	AvatarURL   string `json:"avatar_url"`
-	BookName    string `json:"book_name"`
-	Cost        int64  `json:"cost"`
-	ChestImgURL string `json:"chest_img_url"`
-	PropID      int64  `json:"prop_id"`
-	Content     string `json:"content"`
 }

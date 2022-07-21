@@ -1,7 +1,7 @@
 package structure
 
 type DivisionStruct struct {
-	Code string       `json:"code"`
+	Code int          `json:"code"`
 	Data DivisionData `json:"data"`
 }
 

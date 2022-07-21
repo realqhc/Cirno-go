@@ -1,24 +1,26 @@
 package structure
 
 type ChapterStruct struct {
-	Code string      `json:"code"`
+	Code int         `json:"code"`
 	Data ChapterData `json:"data"`
 }
 
 type ChapterData struct {
 	ChapterList     []ChapterList `json:"chapter_list"`
-	MaxUpdateTime   string        `json:"max_update_time"`
-	MaxChapterIndex string        `json:"max_chapter_index"`
+	MaxUpdateTime   int           `json:"max_update_time"`
+	MaxChapterIndex int           `json:"max_chapter_index"`
 }
 
 type ChapterList struct {
 	ChapterID      string `json:"chapter_id"`
+	BaseStatus     string `json:"base_status"`
 	ChapterIndex   string `json:"chapter_index"`
 	ChapterTitle   string `json:"chapter_title"`
 	WordCount      string `json:"word_count"`
 	TsukkomiAmount string `json:"tsukkomi_amount"`
 	IsPaid         string `json:"is_paid"`
-	Mtime          string `json:"mtime"`
+	Uptime         string `json:"uptime"`
 	IsValid        string `json:"is_valid"`
-	AuthAccess     string `json:"auth_access"`
+	AuthAccess     int    `json:"auth_access"`
+	DeleteStatus   int    `json:"delete_status"`
 }

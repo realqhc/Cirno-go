@@ -19,11 +19,11 @@ func InitConfig(hasConfig bool) {
 		viper.SetConfigName("config")
 		viper.AddConfigPath(expandedDir + "/Cirno")
 		viper.SetConfigType("yaml")
-		viper.SetDefault("app.app_version", "2.9.290")
-		viper.SetDefault("app.device_token", "ciweimao_")
-		viper.SetDefault("app.user_agent", "Android com.kuangxiangciweimao.novel 2.9.290,Pixel,6A,32")
-		viper.SetDefault("app.default_key", "zG2nSeEfSHfvTCHy5LCcqtBbQehKNLXn")
-		viper.SetDefault("app.host_url", "https://app.hbooker.com")
+		viper.SetDefault("app.app_version", "2.1.3")
+		viper.SetDefault("app.device_token", "duyuedu_")
+		viper.SetDefault("app.user_agent", "Duyuedu/2.1.3 (iPad; iOS 15.6; Scale/2.00)")
+		viper.SetDefault("app.default_key", "Gnzg4OfHHp103jx8ebG82gA8VPJZnLTk")
+		viper.SetDefault("app.host_url", "https://app.duread8.com")
 		viper.SetDefault("extra.coroutines", 3)
 		viper.SetDefault("extra.cpic", false)
 		viper.SetDefault("extra.cache_no_paid", false)
@@ -39,11 +39,11 @@ func InitConfig(hasConfig bool) {
 	} else {
 		Config = structure.ConfigStruct{
 			App: structure.App{
-				AppVersion:  "2.9.290",
-				DeviceToken: "ciweimao_",
-				UserAgent:   "Android com.kuangxiangciweimao.novel 2.9.290,Pixel,6A,32",
-				DefaultKey:  "zG2nSeEfSHfvTCHy5LCcqtBbQehKNLXn",
-				HostUrl:     "http://app.hbooker.com",
+				AppVersion:  "2.1.3",
+				DeviceToken: "duyuedu_",
+				UserAgent:   "Duyuedu/2.1.3 (iPad; iOS 15.6; Scale/2.00)",
+				DefaultKey:  "Gnzg4OfHHp103jx8ebG82gA8VPJZnLTk",
+				HostUrl:     "http://app.duread8.com",
 			},
 		}
 	}

@@ -23,7 +23,7 @@ func DownloadText(bid string) {
 	var chapters []structure.ChapterList
 	if !cacheNoPaidTxt {
 		for _, c := range txtChapters {
-			if c.AuthAccess == "1" {
+			if c.AuthAccess == 1 {
 				chapters = append(chapters, c)
 			}
 		}

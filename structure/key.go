@@ -1,7 +1,7 @@
 package structure
 
 type KeyStruct struct {
-	Code string  `json:"code"`
+	Code int     `json:"code"`
 	Data KeyData `json:"data"`
 }
 
