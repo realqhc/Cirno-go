@@ -7,8 +7,8 @@ type DetailStruct struct {
 
 type DetailData struct {
 	BookInfo      BookInfo        `json:"book_info"`
-	IsInshelf     string          `json:"is_inshelf"`
-	IsBuy         string          `json:"is_buy"`
+	IsInshelf     int             `json:"is_inshelf"`
+	IsBuy         int             `json:"is_buy"`
 	UpReaderInfo  UpReaderInfo    `json:"up_reader_info"`
 	RelatedList   []BookInfo      `json:"related_list"`
 	HotReviewList []HotReviewList `json:"book_shortage_reommend_list"`

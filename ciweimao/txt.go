@@ -66,8 +66,11 @@ func writeText(bookName string, txtContainer map[string]string, chapters []struc
 	dir, _ := homedir.Dir()
 	expandedDir, _ := homedir.Expand(dir)
 	cleanDestBook(expandedDir+"/Cirno/download/", bookName, "txt")
+	counter := 1
 	for _, chapter := range chapters {
+		bookText += fmt.Sprintln("第", counter, "章:", chapter.ChapterTitle)
 		bookText += txtContainer[chapter.ChapterID]
+		counter += 1
 	}
 	fileName := expandedDir + "/Cirno/download/" + bookName + ".txt"
 	if isExist(fileName) {
@@ -91,8 +94,8 @@ func getChapterText(chapters []structure.ChapterList, txt chan chapterStruct, er
 		if err != nil {
 			errc <- chapter
 		} else {
-			text += chapterInfo.ChapterTitle
-			text += "\n\n"
+			//text += chapterInfo.ChapterTitle
+			//text += "\n\n"
 			text += chapterInfo.TxtContent
 			text += chapterInfo.AuthorSay
 			text += "\n\n\n"
